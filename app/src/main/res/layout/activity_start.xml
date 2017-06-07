@@ -4,69 +4,95 @@
     android:id="@+id/activity_start"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/NightMode"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
-    android:background="@color/NightMode"
-    tools:context="com.sweettoto.sleepwell.startActivity"
-    >
+    android:weightSum="1"
+    tools:context="com.sweettoto.sleepwell.startActivity">
+
+    <!--<TextView-->
+    <!--android:id="@+id/textView"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="@dimen/activity_horizontal_margin"-->
+    <!--android:fontFamily="sans-serif"-->
+    <!--android:text="@string/app_main_title"-->
+    <!--android:textAlignment="center"-->
+    <!--android:textAllCaps="false"-->
+    <!--android:textSize="24sp"-->
+    <!--android:textStyle="normal|bold" />-->
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:contentDescription="Analog Clock"
+
+        />
 
     <TextView
-        android:text="@string/app_main_title"
-        android:textSize="24sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-
-        android:fontFamily="sans-serif"
-        android:textStyle="normal|bold"
-        android:textAllCaps="false" />
-
-    <Button
-        android:id="@+id/goToBed"
-        android:text="@string/Button_goToBed_text"
-        android:textSize="16sp"
+        android:id="@+id/board"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:onClick="GetTimestampOfGoToBed"
+        android:layout_height="50dp"
+        android:textAlignment="center"
+        android:textColor="#ccc"
+        android:textSize="20sp"
 
         />
 
-    <Button
-        android:id="@+id/sleep"
-        android:text="@string/Button_startToSleep_text"
+    <AbsoluteLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:onClick="GetTimestampOfSleep"
-        android:layout_weight="0.25"
-        android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/wakeUp"
-        android:text="@string/Button_wakeUp_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.30"
+        >
 
-        android:layout_margin="10dp"
-        android:onClick="GetTimestampOfWakeUp"
-        android:textSize="16sp" />
+        <Button
+            android:id="@+id/goToBed"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_x="170dp"
+            android:layout_y="20dp"
+            android:onClick="GetTimestampOfGoToBed"
+            android:text="@string/Button_goToBed_text"
+            android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/getUp"
-        android:text="@string/Button_getUp_text"
-        android:textSize="16sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.10"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="60dp"
-        android:onClick="GetTimestampOfGetUp"
-        />
+        <Button
+            android:id="@+id/getUp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+
+            android:layout_x="170dp"
+            android:layout_y="150dp"
+            android:onClick="GetTimestampOfGetUp"
+            android:text="@string/Button_getUp_text"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/wakeUp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_x="20dp"
+            android:layout_y="150dp"
+            android:onClick="GetTimestampOfWakeUp"
+            android:text="@string/Button_wakeUp_text"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/sleep"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+
+            android:layout_x="20dp"
+            android:layout_y="20dp"
+            android:onClick="GetTimestampOfSleep"
+            android:text="@string/Button_startToSleep_text"
+            android:textSize="16sp" />
+
+
+    </AbsoluteLayout>
 
 
 </LinearLayout>
