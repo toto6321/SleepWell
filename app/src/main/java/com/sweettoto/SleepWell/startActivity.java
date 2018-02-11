@@ -1,6 +1,7 @@
 package com.sweettoto.sleepwell;
 
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -16,14 +17,20 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class startActivity extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+        startService(new Intent(StartActivity.this,PowerService.class));
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        stopService(new Intent(StartActivity.this,PowerService.class));
+    }
 
     public void GetTimestampOfGoToBed(View view) {
         react(1);
@@ -124,7 +131,7 @@ public class startActivity extends AppCompatActivity {
         }
 
         // create the json file
-        File jsonFile = new File(JSONData, tag + "_" + timeStamp);
+        File jsonFile = new File(JSONData, timeStamp);
         Log.d("MyAPP pathOfData: ", jsonFile.getAbsolutePath());
 
         // to create an instance of FileWriter to write data into a json file
