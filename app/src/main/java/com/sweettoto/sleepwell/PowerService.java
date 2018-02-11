@@ -20,7 +20,18 @@ import java.io.IOException;
  * Created by Carlos on 2018/2/11.
  */
 
-public class PowerService extends Service{
+public class PowerService extends Service {
+
+    private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (Intent.ACTION_SCREEN_OFF.equals(intent.getAction())) {
+                SaveToJsonFile("0", TimeUtils.getTimeStamp());
+            } else if (Intent.ACTION_SCREEN_ON.equals(intent.getAction())) {
+                SaveToJsonFile("1", TimeUtils.getTimeStamp());
+            }
+        }
+    };
 
     @Nullable
     @Override
@@ -31,27 +42,16 @@ public class PowerService extends Service{
     @Override
     public void onCreate() {
         super.onCreate();
-        IntentFilter intentFilter=new IntentFilter();
+        IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
         intentFilter.addAction(Intent.ACTION_SCREEN_ON);
-        registerReceiver(mBroadcastReceiver,intentFilter);
+        registerReceiver(mBroadcastReceiver, intentFilter);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
     }
-
-    private BroadcastReceiver mBroadcastReceiver=new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (Intent.ACTION_SCREEN_OFF.equals(intent.getAction())){
-                SaveToJsonFile("0", TimeUtils.getTimeStamp());
-            }else if (Intent.ACTION_SCREEN_ON.equals(intent.getAction())){
-                SaveToJsonFile("1", TimeUtils.getTimeStamp());
-            }
-        }
-    };
 
     private void SaveToJsonFile(String tag, String timeStamp) {
 
@@ -72,7 +72,7 @@ public class PowerService extends Service{
         }
 
         // create the json file
-        File jsonFile = new File(JSONData, timeStamp);
+        File jsonFile = new File(JSONData, tag + "|" + timeStamp);
         Log.d("MyAPP pathOfData: ", jsonFile.getAbsolutePath());
 
         // to create an instance of FileWriter to write data into a json file
