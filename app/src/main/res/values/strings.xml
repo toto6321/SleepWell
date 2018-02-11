@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SleepWell?</string>
+    <string name="app_main_title">Keep your sleep record</string>
+    <string name="Button_goToBed_text">On bed</string>
+    <string name="Button_startToSleep_text">Sleep</string>
+    <string name="Button_wakeUp_text">Wake up</string>
+    <string name="Button_getUp_text">Get up</string>
+</resources>
